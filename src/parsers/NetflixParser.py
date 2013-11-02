@@ -1,4 +1,5 @@
-import Parser
+from Parser import *
+
 import urllib
 import http.cookiejar
 from lxml import html

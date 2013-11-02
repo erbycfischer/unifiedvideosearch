@@ -1,1 +1,15 @@
-Read me!
+A unified search engine for premium streaming video services
+
+Written in Python 3.3.2
+
+Dependencies:
+
+bottle.py (bottle)
+gunicorn web server
+lxml
+stevedore
+virtualenv
+virtualenv-clone
+virtualenvwrapper
+
+Specific versions in requirements.txt

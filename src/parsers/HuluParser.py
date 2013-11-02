@@ -7,9 +7,12 @@ import re
 
 class HuluParser(Parser):
 
-	def get_videos():
+	videos = []
 
-		videos = []
+
+	def get_videos(self):
+
+		self.videos = []
 
 		req = urllib.request.Request("https://www.hulu.com/browse/tv", headers={'User Agent' : "Magic Browser"})
 		source = urllib.request.urlopen(req).read()
@@ -22,7 +25,7 @@ class HuluParser(Parser):
 			link = tag.get("href")
 			movieID = tag.get("beaconid")
 
-			videos.append((title, [movieID, link]))
+			self.videos.append((title, [movieID, link, "tv"]))
 
 		req = urllib.request.Request("https://www.hulu.com/browse/movies", headers={'User Agent' : "Magic Browser"})
 		source = urllib.request.urlopen(req).read()
@@ -35,14 +38,13 @@ class HuluParser(Parser):
 			link = tag.get("href")
 			movieID = tag.get("beaconid")
 
-			videos.append((title, [movieID, link]))
+			self.videos.append((title, [movieID, link, "movie"]))
 
-		return videos
 
-	def search(query):
-		videos = get_videos()
+	def search(self, query):
 		results = []
 
-		for video in videos:
+		for video in self.videos:
 			if (re.search(query, video[0], re.IGNORECASE)):
 				results.append(video)
+		return results

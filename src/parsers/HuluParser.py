@@ -7,13 +7,10 @@ import re
 
 class HuluParser(Parser):
 
-	videos = []
-
-
-	def get_videos(self):
-
+	def __init__(self):
 		self.videos = []
 
+	def get_videos(self):
 		req = urllib.request.Request("https://www.hulu.com/browse/tv", headers={'User Agent' : "Magic Browser"})
 		source = urllib.request.urlopen(req).read()
 

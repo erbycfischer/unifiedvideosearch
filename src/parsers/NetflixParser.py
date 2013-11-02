@@ -6,6 +6,9 @@ from lxml import html
 
 class NetflixParser(Parser):
 
+	def __init__(self):
+		pass
+
 	def search(self, movie):
 
 		movie =  movie.strip()

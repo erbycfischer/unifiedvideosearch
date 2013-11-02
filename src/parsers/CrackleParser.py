@@ -7,12 +7,10 @@ from lxml import etree
 class CrackleParser(Parser):
 
 	def search(self, query):
-
 		results = []
 
 		query =  query.strip()
 		query = query.replace(" ", "%20")
-
 
 		jar = http.cookiejar.CookieJar()
 		opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
